@@ -1,14 +1,10 @@
 ### Intellij ###
 .idea/
 *.iws
-/out/
+out/
 *.iml
 .idea_modules/
 atlassian-ide-plugin.xml
-
-### VS-Code ###
-.vscode/
-.VSCodeCounter/
 
 ### Eclipse ###
 .metadata
@@ -76,8 +72,10 @@ $RECYCLE.BIN/
 
 ### Gradle ###
 .gradle
-/build/
-out/
+# build/ already defined under netbeans
 gradle-app.setting
 !gradle-wrapper.jar
 .gradletasknamecache
+
+### Kotlin/JS ###
+yarn.lock
