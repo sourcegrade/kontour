@@ -12,6 +12,12 @@ extensions.getByName<KotlinMultiplatformExtension>("kotlin").apply {
     }
 }
 
+extensions.getByType<JavaPluginExtension>().apply {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
 dependencies {
     "jvmMainImplementation"(kotlin("reflect"))
 }
