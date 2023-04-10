@@ -6,5 +6,5 @@ plugins {
 
 dependencies {
     jvmMainApi(platform(libs.exposed.bom))
-    jvmMainImplementation(libs.bundles.exposed)
+    jvmMainApi(libs.bundles.exposed)
 }
