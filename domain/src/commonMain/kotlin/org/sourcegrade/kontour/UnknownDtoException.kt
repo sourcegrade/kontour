@@ -19,19 +19,9 @@
 
 package org.sourcegrade.kontour
 
-interface DomainEntity {
-    val id: UUID
-    // TODO: createdUtc, updatedUtc
+import kotlin.reflect.KClass
 
-    /**
-     * A [Repository] for [DomainEntity]s.
-     */
-    interface Repository<E : DomainEntity>
-}
-
-interface Creates<E : DomainEntity>
-
-interface Dto<E : DomainEntity> {
-    val id: UUID
-    val entity: E
-}
+class UnknownDtoException(
+    dtoType: KClass<out Dto<*>>,
+    entityType: KClass<out DomainEntity>,
+) : RuntimeException("Unknown dto type ${dtoType.simpleName} for entity type ${entityType.simpleName}")
