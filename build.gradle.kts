@@ -14,4 +14,16 @@ allprojects {
     project.findProperty("buildNumber")
         ?.takeIf { version.toString().contains("SNAPSHOT") }
         ?.also { version = version.toString().replace("SNAPSHOT", "RC$it") }
+    kotlin {
+        targets.all {
+            compilations.all {
+                kotlinOptions {
+                    freeCompilerArgs += listOf(
+                        "-opt-in=kotlin.RequiresOptIn",
+                        "-Xcontext-receivers",
+                    )
+                }
+            }
+        }
+    }
 }
