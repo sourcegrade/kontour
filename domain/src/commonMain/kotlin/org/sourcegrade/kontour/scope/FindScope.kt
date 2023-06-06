@@ -26,7 +26,7 @@ import kotlin.reflect.KClass
 
 interface FindScope<E : DomainEntity> {
 
-    suspend fun DomainEntity.Repository<E>.findById(id: UUID): E?
+    suspend fun E.exists(): Boolean
 
     suspend fun <D : Dto<E>> DomainEntity.Repository<E>.findDtoById(id: UUID, dtoType: KClass<D>): D?
 }
