@@ -24,7 +24,7 @@ interface DomainEntity {
     // TODO: createdUtc, updatedUtc
 
     /**
-     * A [Repository] for [DomainEntity]s.
+     * A [Repository] for [DomainEntities][DomainEntity].
      */
     interface Repository<E : DomainEntity>
 }
