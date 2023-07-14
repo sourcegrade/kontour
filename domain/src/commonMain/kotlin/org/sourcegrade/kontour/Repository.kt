@@ -22,8 +22,9 @@ package org.sourcegrade.kontour
 import kotlin.reflect.KClass
 
 interface Repository<E : DomainEntity, C : Creates<E>> {
-    suspend fun exists(id: UUID): Boolean
     suspend fun create(item: C): E
-    suspend fun deleteById(id: UUID): Boolean
+    suspend fun exists(id: UUID): Boolean
+    suspend fun countAll(): Int
     suspend fun <D : Dto<E>> findDtoById(id: UUID, dtoType: KClass<D>): D?
+    suspend fun deleteById(id: UUID): Boolean
 }
