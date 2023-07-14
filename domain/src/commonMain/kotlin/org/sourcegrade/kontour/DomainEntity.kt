@@ -22,11 +22,6 @@ package org.sourcegrade.kontour
 interface DomainEntity {
     val id: UUID
     // TODO: createdUtc, updatedUtc
-
-    /**
-     * A [Repository] for [DomainEntities][DomainEntity].
-     */
-    interface Repository<E : DomainEntity>
 }
 
 interface Creates<E : DomainEntity>
