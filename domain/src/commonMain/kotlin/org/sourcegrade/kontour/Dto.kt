@@ -19,14 +19,10 @@
 
 package org.sourcegrade.kontour
 
-interface DomainEntity {
+interface Dto<E : DomainEntity> {
     val id: UUID
-    // TODO: createdUtc, updatedUtc
-
-    /**
-     * A [Repository] for [DomainEntities][DomainEntity].
-     */
-    interface Repository<E : DomainEntity>
+    val entity: E
 }
 
-interface Creates<E : DomainEntity>
+suspend inline fun <E : DomainEntity, reified D : Dto<E>> Repository<E, *>.findDtoById(id: UUID): D? =
+    findDtoById(id, D::class)
