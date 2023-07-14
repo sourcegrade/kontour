@@ -17,12 +17,13 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package org.sourcegrade.kontour.scope
+package org.sourcegrade.kontour
 
-import org.sourcegrade.kontour.Creates
-import org.sourcegrade.kontour.DomainEntity
+import kotlin.reflect.KClass
 
-interface CrudScope<E : DomainEntity, D : Creates<E>> :
-    CreateScope<E, D>,
-    FindScope<E>,
-    DeleteScope<E>
+interface Repository<E : DomainEntity, D : Creates<E>> {
+    suspend fun exists(id: UUID): Boolean
+    suspend fun create(item: D): E
+    suspend fun deleteById(id: UUID): Boolean
+    suspend fun <D : Dto<E>> findDtoById(id: UUID, dtoType: KClass<D>): D?
+}
