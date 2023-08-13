@@ -19,10 +19,7 @@
 
 package org.sourcegrade.kontour
 
-interface Repository<out E : DomainEntity> {
-    suspend fun getById(id: UUID): E?
-    suspend fun paginate(): Pagination<E>
-    suspend fun exists(id: UUID): Boolean
-    suspend fun countAll(): Long
-    suspend fun deleteById(id: UUID): Boolean
+interface Pagination<out E : DomainEntity> {
+    fun limit(n: Int, offset: Long = 0)
+    fun build(): SizedIterable<E>
 }
