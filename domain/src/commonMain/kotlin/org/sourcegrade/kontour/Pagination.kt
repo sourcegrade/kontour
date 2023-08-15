@@ -19,7 +19,15 @@
 
 package org.sourcegrade.kontour
 
-interface Pagination<out E : DomainEntity> {
-    fun limit(n: Int, offset: Long = 0)
-    fun build(): SizedIterable<E>
+import kotlin.reflect.KProperty1
+
+interface Pagination<E : DomainEntity> {
+    fun limit(n: Int, offset: Long = 0): Pagination<E>
+    fun sortBy(field: KProperty1<E, Comparable<*>>, direction: SortDirection = SortDirection.ASCENDING): Pagination<E>
+    fun build(): List<E>
+}
+
+enum class SortDirection {
+    ASCENDING,
+    DESCENDING,
 }

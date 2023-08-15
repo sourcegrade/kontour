@@ -19,7 +19,7 @@
 
 package org.sourcegrade.kontour
 
-interface Repository<out E : DomainEntity> {
+interface Repository<E : DomainEntity> {
     suspend fun getById(id: UUID): E?
     suspend fun paginate(): Pagination<E>
     suspend fun exists(id: UUID): Boolean
