@@ -24,4 +24,8 @@ interface DomainEntity {
     // TODO: createdUtc, updatedUtc
 }
 
+interface DomainFacet<E : DomainEntity> {
+    suspend fun getOriginal(): E
+}
+
 interface Creates<E : DomainEntity>

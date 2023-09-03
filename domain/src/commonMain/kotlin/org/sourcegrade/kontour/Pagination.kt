@@ -21,10 +21,10 @@ package org.sourcegrade.kontour
 
 import kotlin.reflect.KProperty1
 
-interface Pagination<E : DomainEntity> {
-    fun limit(n: Int, offset: Long = 0): Pagination<E>
-    fun sortBy(field: KProperty1<E, Comparable<*>>, direction: SortDirection = SortDirection.ASCENDING): Pagination<E>
-    fun build(): List<E>
+interface Pagination<F : DomainFacet<*>> {
+    fun limit(n: Int, offset: Long = 0): Pagination<F>
+    fun sortBy(field: KProperty1<F, Comparable<*>>, direction: SortDirection = SortDirection.ASCENDING): Pagination<F>
+    fun build(): List<F>
 }
 
 enum class SortDirection {
